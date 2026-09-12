@@ -1,0 +1,914 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diwa | Smart Digital Platform</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#05091c;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+:root{
+    --green:#20d99a;
+    --green2:#00b878;
+    --dark:#070c25;
+    --card:#10172f;
+    --border:rgba(255,255,255,.10);
+    --muted:#9da5bc;
+}
+
+/* HEADER */
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,9,28,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(32,217,154,.12);
+}
+
+.header-inner{
+    max-width:900px;
+    margin:auto;
+    height:78px;
+    padding:0 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo-area h1{
+    color:var(--green);
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-.5px;
+}
+
+.logo-area p{
+    color:#929ab1;
+    font-size:13px;
+    margin-top:3px;
+}
+
+.get-app{
+    text-decoration:none;
+    color:#06151a;
+    background:linear-gradient(135deg,#26e6a5,#00bd7d);
+    padding:14px 25px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:800;
+    box-shadow:0 0 25px rgba(32,217,154,.25);
+    transition:.3s;
+}
+
+.get-app:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 35px rgba(32,217,154,.45);
+}
+
+/* MAIN */
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 20px 70px;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    padding:70px 15px 35px;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:rgba(32,217,154,.12);
+    filter:blur(100px);
+    border-radius:50%;
+    top:-120px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.badge{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border:1px solid rgba(32,217,154,.35);
+    border-radius:30px;
+    color:#69eabd;
+    background:rgba(32,217,154,.06);
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 12px var(--green);
+}
+
+.hero h2{
+    position:relative;
+    font-size:clamp(42px,8vw,76px);
+    line-height:1.02;
+    letter-spacing:-2px;
+    font-weight:900;
+}
+
+.hero h2 span{
+    color:var(--green);
+}
+
+.hero-description{
+    position:relative;
+    color:#aeb5c9;
+    font-size:18px;
+    line-height:1.7;
+    max-width:650px;
+    margin:22px auto 30px;
+}
+
+/* STATS */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:25px 0;
+}
+
+.stat{
+    padding:22px 10px;
+    border:1px solid var(--border);
+    background:rgba(18,25,51,.75);
+    border-radius:18px;
+}
+
+.stat strong{
+    display:block;
+    color:var(--green);
+    font-size:25px;
+    margin-bottom:7px;
+}
+
+.stat span{
+    color:#8e97ad;
+    font-size:13px;
+}
+
+/* BUTTON */
+.main-button{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    min-height:68px;
+    margin:28px 0;
+    text-decoration:none;
+    color:#04151a;
+    background:linear-gradient(135deg,#29e7a7,#00b879);
+    border-radius:40px;
+    font-size:20px;
+    font-weight:900;
+    box-shadow:0 10px 35px rgba(0,200,130,.25);
+    transition:.3s;
+}
+
+.main-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 45px rgba(0,220,145,.4);
+}
+
+.main-button span{
+    margin-left:10px;
+}
+
+/* DASHBOARD */
+.dashboard{
+    padding:25px;
+    border:1px solid rgba(32,217,154,.18);
+    background:linear-gradient(145deg,#111936,#0b122b);
+    border-radius:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.dashboard-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+}
+
+.dashboard-head h3{
+    font-size:22px;
+}
+
+.dashboard-head p{
+    color:#8992aa;
+    margin-top:5px;
+    font-size:14px;
+}
+
+.online{
+    color:#42e7af;
+    background:rgba(32,217,154,.10);
+    border:1px solid rgba(32,217,154,.25);
+    padding:8px 13px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.dashboard-main{
+    padding:25px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#101a36,#11162b);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.dashboard-main small{
+    color:#929ab0;
+    font-size:14px;
+}
+
+.dashboard-main h4{
+    color:var(--green);
+    font-size:40px;
+    margin-top:8px;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:14px;
+}
+
+.dashboard-box{
+    background:#141d39;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:18px;
+    padding:20px;
+}
+
+.dashboard-box strong{
+    display:block;
+    font-size:20px;
+}
+
+.dashboard-box span{
+    display:block;
+    color:#8992aa;
+    margin-top:6px;
+    font-size:13px;
+}
+
+/* SECTION */
+.section{
+    padding:75px 0 10px;
+    text-align:center;
+}
+
+.section-label{
+    color:var(--green);
+    font-size:14px;
+    font-weight:900;
+    letter-spacing:4px;
+    margin-bottom:14px;
+}
+
+.section h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.section > p{
+    color:#929ab1;
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* FEATURES */
+.features{
+    margin-top:35px;
+    display:grid;
+    gap:18px;
+}
+
+.feature{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    text-align:left;
+    padding:25px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#10172f,#0d132a);
+    border:1px solid var(--border);
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-3px);
+    border-color:rgba(32,217,154,.35);
+}
+
+.icon{
+    min-width:58px;
+    height:58px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:17px;
+    background:rgba(32,217,154,.10);
+    border:1px solid rgba(32,217,154,.25);
+    color:var(--green);
+    font-size:27px;
+}
+
+.feature h3{
+    font-size:19px;
+    margin-bottom:7px;
+}
+
+.feature p{
+    color:#929ab0;
+    line-height:1.5;
+    font-size:14px;
+}
+
+/* STEPS */
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:35px;
+}
+
+.step{
+    background:#10172f;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px 15px;
+}
+
+.step-number{
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    background:var(--green);
+    color:#06151a;
+    border-radius:50%;
+    font-weight:900;
+}
+
+.step h3{
+    font-size:16px;
+}
+
+.step p{
+    color:#8992aa;
+    font-size:13px;
+    line-height:1.5;
+    margin-top:8px;
+}
+
+/* SUPPORT */
+.support-box{
+    margin-top:35px;
+    padding:35px 20px;
+    background:linear-gradient(145deg,#0f1833,#0b1229);
+    border:1px solid rgba(32,217,154,.20);
+    border-radius:28px;
+}
+
+.support-box h3{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.support-box p{
+    color:#8e97ad;
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+.support-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.support-button{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:55px;
+    text-decoration:none;
+    border-radius:15px;
+    font-weight:800;
+    color:white;
+    background:#17213d;
+    border:1px solid rgba(255,255,255,.09);
+    transition:.3s;
+}
+
+.support-button:hover{
+    border-color:var(--green);
+    color:var(--green);
+}
+
+/* FLOATING SUPPORT */
+.float-support{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--green);
+    color:#04151a;
+    text-decoration:none;
+    font-size:25px;
+    font-weight:bold;
+    box-shadow:0 8px 30px rgba(32,217,154,.35);
+    z-index:999;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:40px 20px 30px;
+    color:#697289;
+    font-size:13px;
+    border-top:1px solid rgba(255,255,255,.06);
+    margin-top:70px;
+}
+
+footer strong{
+    color:var(--green);
+}
+
+/* MOBILE */
+@media(max-width:650px){
+
+    .header-inner{
+        height:70px;
+        padding:0 16px;
+    }
+
+    .logo-area h1{
+        font-size:23px;
+    }
+
+    .get-app{
+        padding:11px 17px;
+        font-size:14px;
+    }
+
+    .container{
+        padding:0 14px 50px;
+    }
+
+    .hero{
+        padding-top:55px;
+    }
+
+    .hero h2{
+        font-size:45px;
+        letter-spacing:-1.5px;
+    }
+
+    .hero-description{
+        font-size:15px;
+    }
+
+    .stats{
+        gap:7px;
+    }
+
+    .stat{
+        padding:17px 5px;
+    }
+
+    .stat strong{
+        font-size:20px;
+    }
+
+    .stat span{
+        font-size:11px;
+    }
+
+    .main-button{
+        min-height:62px;
+        font-size:18px;
+    }
+
+    .dashboard{
+        padding:18px;
+        border-radius:22px;
+    }
+
+    .dashboard-main{
+        padding:20px;
+    }
+
+    .dashboard-main h4{
+        font-size:34px;
+    }
+
+    .section{
+        padding-top:60px;
+    }
+
+    .section h2{
+        font-size:31px;
+    }
+
+    .feature{
+        padding:20px;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .support-buttons{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+
+        <div class="logo-area">
+            <h1>Diwa</h1>
+            <p>Smart Digital Platform</p>
+        </div>
+
+        <a class="get-app"
+           href="https://diwacore.com/?invite=oTBYib"
+           target="_blank">
+           Get App
+        </a>
+
+    </div>
+</header>
+
+
+<main class="container">
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="badge">
+        <span class="dot"></span>
+        Diwa Digital Platform
+    </div>
+
+    <h2>
+        Your Digital Journey.
+        <span>Made Simple.</span>
+    </h2>
+
+    <p class="hero-description">
+        Explore the Diwa platform with a clean, fast and
+        mobile-friendly experience designed for everyday users.
+    </p>
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>Fast</strong>
+            <span>Easy Access</span>
+        </div>
+
+        <div class="stat">
+            <strong>Secure</strong>
+            <span>Modern Platform</span>
+        </div>
+
+        <div class="stat">
+            <strong>24/7</strong>
+            <span>Online Access</span>
+        </div>
+
+    </div>
+
+    <!-- APK BUTTON -->
+    <a class="main-button"
+       href="https://diwacore.com/?invite=oTBYib"
+       target="_blank">
+
+        Download APK
+        <span>→</span>
+
+    </a>
+
+</section>
+
+
+<!-- PLATFORM PREVIEW -->
+<section>
+
+    <div class="dashboard">
+
+        <div class="dashboard-head">
+
+            <div>
+                <h3>Diwa Dashboard</h3>
+                <p>Platform overview</p>
+            </div>
+
+            <div class="online">
+                ● ONLINE
+            </div>
+
+        </div>
+
+        <div class="dashboard-main">
+
+            <small>Diwa Platform</small>
+
+            <h4>Welcome</h4>
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-box">
+                    <strong>Simple</strong>
+                    <span>Easy navigation</span>
+                </div>
+
+                <div class="dashboard-box">
+                    <strong>Fast</strong>
+                    <span>Quick access</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="section">
+
+    <div class="section-label">
+        DIWA FEATURES
+    </div>
+
+    <h2>Everything In One Place</h2>
+
+    <p>
+        A clean and simple platform experience with
+        easy access from your mobile device.
+    </p>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="icon">⚡</div>
+
+            <div>
+                <h3>Fast & Simple</h3>
+                <p>
+                    Designed with a simple interface
+                    for quick navigation.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="icon">🛡</div>
+
+            <div>
+                <h3>Secure Experience</h3>
+                <p>
+                    A clean platform layout focused
+                    on a smooth user experience.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="icon">📱</div>
+
+            <div>
+                <h3>Mobile Friendly</h3>
+                <p>
+                    Optimized for Android phones,
+                    tablets and modern browsers.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="icon">💬</div>
+
+            <div>
+                <h3>Support Available</h3>
+                <p>
+                    Contact the support channel whenever
+                    you need assistance.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="section">
+
+    <div class="section-label">
+        GET STARTED
+    </div>
+
+    <h2>Start With Diwa</h2>
+
+    <p>
+        Follow these simple steps to access the platform.
+    </p>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>Open Diwa</h3>
+
+            <p>
+                Tap the button below to visit the platform.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>Download APK</h3>
+
+            <p>
+                Use the official download option available
+                on the platform.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>Get Support</h3>
+
+            <p>
+                Contact support if you need help.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <a class="main-button"
+       href="https://diwacore.com/?invite=oTBYib"
+       target="_blank">
+
+        Download Diwa APK
+        <span>→</span>
+
+    </a>
+
+</section>
+
+
+<!-- SUPPORT -->
+<section class="section">
+
+    <div class="section-label">
+        CONTACT
+    </div>
+
+    <h2>Need Help?</h2>
+
+    <div class="support-box">
+
+        <h3>Contact Support</h3>
+
+        <p>
+            For assistance and platform-related questions,
+            use one of the official contact options below.
+        </p>
+
+
+        <div class="support-buttons">
+
+            <!-- TELEGRAM -->
+            <a class="support-button"
+               href="https://t.me/DiwaPay_OfficiaI"
+               target="_blank">
+               Telegram Support
+            </a>
+
+
+            <!-- WEBSITE -->
+            <a class="support-button"
+               href="https://diwapaychat.com/"
+               target="_blank">
+               Support Website
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FLOATING SUPPORT -->
+<a class="float-support"
+   href="https://t.me/DiwaPay_OfficiaI"
+   target="_blank"
+   title="Contact Support">
+
+   💬
+
+</a>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <strong>Diwa</strong><br><br>
+
+    Smart Digital Platform<br>
+
+    ©️ 2026 Diwa. All rights reserved.
+
+</footer>
+
+
+</body>
+</html>
